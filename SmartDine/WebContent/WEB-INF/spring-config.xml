@@ -29,6 +29,8 @@
 		<property name="annotatedClasses">
 			<list>
 					<value>tab.entity.Category</value>
+					<value>tab.entity.Item</value>
+					<value>tab.entity.User</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -71,5 +73,11 @@
 
 	<bean id="categoryDao" class="tab.dao.CategoryDaoImpl"></bean>
 	<bean id="categoryServices" class="tab.service.CategoryServiceImpl"></bean>
+	
+	<bean id="itemDao" class="tab.dao.ItemDaoImpl"></bean>
+	<bean id="itemServices" class="tab.service.ItemServiceImpl"></bean>
+	
+	<bean id="userDao" class="tab.dao.UserDaoImpl"></bean>
+	<bean id="userServices" class="tab.service.UserServiceImpl"></bean>
 	
 </beans>
