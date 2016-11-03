@@ -35,6 +35,10 @@ public class CategoryDaoImpl implements CategoryDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(session!=null){
+				session.close();
+			}
 		}
 		return b;	
 		}
@@ -51,6 +55,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 	return categoryList;
 	}
 

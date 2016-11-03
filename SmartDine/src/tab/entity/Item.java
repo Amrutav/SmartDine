@@ -26,13 +26,21 @@ public class Item {
 	private String itemType;
 	@Column(name="ItemDesc")
 	private String itemDesc;
+	@Column(name="ItemAvailability")
+	private String itemAvailability;
+	public String getItemAvailability() {
+		return itemAvailability;
+	}
+	public void setItemAvailability(String itemAvailability) {
+		this.itemAvailability = itemAvailability;
+	}
 	public String getItemDesc() {
 		return itemDesc;
 	}
 	public void setItemDesc(String itemDesc) {
 		this.itemDesc = itemDesc;
 	}
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="CatagoryId")
 	private Category catagory;
 	public int getItemId() {

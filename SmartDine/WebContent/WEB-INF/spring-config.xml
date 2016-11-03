@@ -30,6 +30,7 @@
 			<list>
 					<value>tab.entity.Category</value>
 					<value>tab.entity.Item</value>
+					<value>tab.entity.Price</value>
 					<value>tab.entity.User</value>
 			</list>
 		</property>
@@ -66,7 +67,10 @@
 
 	</bean>
 
-    <mvc:resources mapping="/WEB-INF/**" location="/WEB-INF/" /> 
+    <mvc:resources mapping="/WEB-INF/**" location="/WEB-INF/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/fonts/**" location="/fonts/" />
+    <mvc:resources mapping="/img/**" location="/img/" /> 
     <mvc:resources mapping="/js/**" location="/js/" />
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
@@ -76,6 +80,9 @@
 	
 	<bean id="itemDao" class="tab.dao.ItemDaoImpl"></bean>
 	<bean id="itemServices" class="tab.service.ItemServiceImpl"></bean>
+	
+	<bean id="priceDao" class="tab.dao.PriceDaoImpl"></bean>
+	<bean id="priceServices" class="tab.service.PriceServiceImpl"></bean>
 	
 	<bean id="userDao" class="tab.dao.UserDaoImpl"></bean>
 	<bean id="userServices" class="tab.service.UserServiceImpl"></bean>

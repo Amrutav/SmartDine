@@ -3,6 +3,7 @@ package tab.service;
 import java.util.List;
 
 import tab.entity.Item;
+import tab.entity.ItemBean;
 
 public interface ItemService {
 
@@ -12,6 +13,6 @@ public interface ItemService {
 
 	public boolean deleteItem(Item item)throws Exception;
 
-	public List<Item> getItemListByCategoryId(int categoryId)throws Exception;
+	public List<ItemBean> getItemListByCategoryId(int categoryId)throws Exception;
 
 }

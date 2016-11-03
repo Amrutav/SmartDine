@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 
 import tab.entity.Item;
+import tab.entity.ItemBean;
 
 public interface ItemDao {
 
@@ -14,6 +15,6 @@ public interface ItemDao {
 
 	public boolean deleteItem(Item item)throws Exception, HibernateException;
 
-	public List<Item> getItemListByCategoryId(int categoryId)throws Exception;
+	public List<ItemBean> getItemListByCategoryId(int categoryId)throws Exception;
 
 }

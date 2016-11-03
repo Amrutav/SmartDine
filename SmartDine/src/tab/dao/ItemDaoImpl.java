@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import tab.entity.Item;
+import tab.entity.ItemBean;
 
 public class ItemDaoImpl implements ItemDao {
 	
@@ -73,21 +74,37 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public List<Item> getItemListByCategoryId(int categoryId) throws Exception {
+	public List<ItemBean> getItemListByCategoryId(int categoryId) throws Exception {
 		// TODO Auto-generated method stub
-		List<Item> getBoardListbyuserId = new ArrayList<Item>();
+		List<ItemBean> getItemListByCategoryId = new ArrayList<ItemBean>();
+		List temp=null;
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			String sql = "SELECT * FROM tbl_food_item WHERE CatagoryId = "+categoryId;
+			String sql = "SELECT itemId,itemName,itemType,itemDesc,itemAvailability,catagoryId FROM tbl_food_item WHERE CatagoryId = "+categoryId;
 			SQLQuery query = session.createSQLQuery(sql);
-			query.addEntity(Item.class);
-			getBoardListbyuserId = query.list();
+			temp=query.list();
+			if(temp!=null && temp.size()!=0){
+				for(Object obj:temp){
+					Object[] item=(Object[]) obj;
+					ItemBean bean=new ItemBean();
+					bean.setItemId((int) item[0]);
+					bean.setItemName((String) item[1]);
+					bean.setItemType((String) item[2]);
+					bean.setItemDesc((String) item[3]);
+					bean.setItemAvailability((String) item[4]);
+					bean.setCategoryId((int) item[5]);
+					getItemListByCategoryId.add(bean);
+					
+				}
+				
+			}
+	
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return getBoardListbyuserId;
+		return getItemListByCategoryId;
 	}
 
 }

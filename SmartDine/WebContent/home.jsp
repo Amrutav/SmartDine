@@ -8,78 +8,11 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 
-<script type="text/javascript">
-alert("Hllo");
-	alert("ok");
 
-$("#login").click(function( event ) {
-	dataObject = {
-  'userName':$('#txtUName').val(),
-  'password':$('#txtPwd').val(),
-  'userType':$('#UserType').val()
-  };
-console.log(dataObject);
-	
-$.ajax({
-    url: '/TabMenu/User/login',
-    type: 'post',
-	contentType: "application/json; charset=utf-8",
-	dataType:'json',
-	data:JSON.stringify(dataObject),
-    success: function(result) {
-    	console.log(result);
-//    	console.log(result.user.userId); 
-//        console.log(result.user.userTermsCondn);
-//        console.log(result);
-        	if(result.status=="SUCCESS"){
-        		//alert("ok");
-        		var userData=result.user.userId;
-        		var session = sessionStorage.setItem("UserData",userData);
-        		console.log(session);
-        		window.location="TabMenu/adminHome.jsp";
-        		        		
-    }else if (result.status=="ERROR"){	
-}else{
-	alert("Not ok");
-}
-}
-});
-});
-</script>
-<!-- <script type="text/javascript">
-$(document).ready(function(e) {
-	
-	$("#AdminLogin").click(function(){
-		 var Tabuser=$("#UserType").val();
-		 var UName=$("#txtUserName").val();
-		 var UPassword=$("#txtPassword").val();
-		 if(Tabuser == "0")
-		 {
-		 	alert("Please Select User Type");
-			$("#UserType").focus();
-			return false;
-		 }
-		 if(UName==""){
-		 	alert("Please Enter User Name");
-			$("#txtUserName").focus();
-			return false;
-		 }
-		 if(UPassword==""){
-		 	alert("Please Enter Password");
-			$("#txtPassword").focus();
-			return false;
-		 }
-		 
-	});
-	
-
-});
-
-</script> -->
 </head>
 <body>
 <div class="Wrapper">
-	<div class="header"> <center><font size="20px">Tab Menu</font></center>
+	<div class="header"> <center><font size="20px">Smart Dine</font></center>
     </div>
     <div class="Reg_FormContainer">
      	<div class="LoginReg_Header">
@@ -114,22 +47,45 @@ $(document).ready(function(e) {
             </div>
 		    <!-- Admin Login Panel-->
     <div class="Admin_Reg_Row">
-        	<input type="submit" class="LogInRegBtn" value="LOGIN" id="login" />
+        	<input type="" class="LogInRegBtn" value="LOGIN" id="login" onclick="return validate_required();" />
         </div>
        </div>
     
 </div>
 
+<script type="text/javascript">
 
+function validate_required() {
 
-<!-- <script type="text/javascript" src="js/login.js"></script> -->
-<!-- 	<center><b><font size="12">Tab Menu</font></b></center> -->
-<!-- 	<ul> -->
-<!-- 	<li> -->
-<!-- 	<a href="adminHome.jsp">Admin</a> -->
-<!-- 	</li> -->
-<!-- 	</ul> -->
-<%-- 	<img alt="" src="<%=request.getContextPath()%>/Images/confirm.png"> --%>
-<%-- 	<%=request.getContextPath()%> --%>
+    var Utype = document.getElementById("UserType").value;
+    var name = document.getElementById("txtUserName").value;
+    var Pass = document.getElementById("txtPassword").value;
+    
+    if (Utype == 0) {
+        alert("Please Select User Type");
+        return false;
+    }
+
+    if (name=="") {
+        alert("Please Entent User Name");
+        return false;
+    }
+   
+    if (Pass == "") {
+        alert("Please Entent Password");
+        return false;
+    }
+   
+    
+    
+    
+    else {
+        return true;
+    }
+}
+
+</script>
+
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

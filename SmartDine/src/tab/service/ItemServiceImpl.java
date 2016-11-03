@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import tab.dao.ItemDao;
 import tab.entity.Item;
+import tab.entity.ItemBean;
 
 public class ItemServiceImpl implements ItemService {
 	
@@ -31,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<Item> getItemListByCategoryId(int categoryId) throws Exception {
+	public List<ItemBean> getItemListByCategoryId(int categoryId) throws Exception {
 		// TODO Auto-generated method stub
 		return itemDao.getItemListByCategoryId(categoryId);
 	}

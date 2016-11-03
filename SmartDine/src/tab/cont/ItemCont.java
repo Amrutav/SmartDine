@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import tab.entity.Category;
 import tab.entity.Item;
+import tab.entity.ItemBean;
 import tab.entity.ItemJsonResponse;
 import tab.service.ItemService;
 
@@ -36,7 +37,7 @@ public class ItemCont {
 	static final Logger logger = Logger.getLogger(Category.class);
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ItemJsonResponse addNewSubject(@Valid @RequestBody Item item, BindingResult bindingResult ){
+	public @ResponseBody ItemJsonResponse addNewItem(@Valid @RequestBody Item item, BindingResult bindingResult ){
 		ItemJsonResponse itemJsonResponse = new ItemJsonResponse();
 		if(bindingResult.hasErrors()){
 			Map<String, String> errors = new HashMap<String, String>();
@@ -81,8 +82,8 @@ public class ItemCont {
 	}
 	
 	@RequestMapping(value = "/itemListByCategoryId", method = RequestMethod.GET)
-	public @ResponseBody List<Item> getItemListByCategoryId(@RequestParam(value = "categoryId") int categoryId){
-		List<Item> itemListByCategoryId = new ArrayList<Item>();
+	public @ResponseBody List<ItemBean> getItemListByCategoryId(@RequestParam(value = "categoryId") int categoryId){
+		List<ItemBean> itemListByCategoryId = new ArrayList<ItemBean>();
 		try {
 			System.out.println("HELLO");
 			itemListByCategoryId = itemServices.getItemListByCategoryId(categoryId);
