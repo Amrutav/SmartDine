@@ -38,11 +38,12 @@ public class CatCont {
 	static final Logger logger = Logger.getLogger(Category.class);
 	
 	@RequestMapping(value="/addCategory", method = RequestMethod.POST)
-	public @ResponseBody CategoryJsonResponse addCategory(HttpServletRequest requst, @RequestParam(value="categoryImage",required=false)MultipartFile image){
-		CategoryJsonResponse categoryJsonRespons = new CategoryJsonResponse();
+	public ModelAndView addCategory(HttpServletRequest requst, @RequestParam(value="categoryImage",required=false)MultipartFile image){
+		String status=null;
+		Map<String, Object> model= new HashMap<>();
 		Category category=null;
 		String imgFile=null;
-		String fileName=requst.getParameter("catgoryName");
+		String fileName=requst.getParameter("categoryName");
 		String hostname="http://85.25.196.222:8080/";
 		String fullPath=null;
 		System.out.println("controller body");
@@ -57,17 +58,22 @@ public class CatCont {
 			category.setCategoryImage(fullPath);
 			flag=categoryServices.addCategory(category);
 			if(flag){
-				categoryJsonRespons.setStatus("SUCCSS");
+				status="SUCCESS";
+				System.out.println(status);
+				model.put("Status", status);
 			}else{
-				categoryJsonRespons.setStatus("FAILED");
+				status="UnSuccessful";
+				System.out.println(status);
+				model.put("Status", status);
 			}
+			}else{
+				System.out.println("no image");
 			}
 			
 		}catch(Exception e){
 			logger.error("Error occours in : ",e);
-			categoryJsonRespons.setStatus(e.toString());
 		}
-		return categoryJsonRespons;
+		return new ModelAndView("AddCategory", model);
 	}
 	
 	@RequestMapping(value = "/categoryList", method = RequestMethod.GET)
