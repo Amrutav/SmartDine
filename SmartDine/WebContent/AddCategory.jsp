@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Panel</title>
-<link href="css/style.css"  rel="stylesheet" type="text/css"  />
-<link href="css/bootstrap.css"  rel="stylesheet" type="text/css"  />
-<link href="css/SlideMenu.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/style.css"  rel="stylesheet" type="text/css"  />
+<link href="${pageContext.request.contextPath}/css/bootstrap.css"  rel="stylesheet" type="text/css"  />
+<link href="${pageContext.request.contextPath}/css/SlideMenu.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <style type="text/css">
 .BrdLine{
 	border-bottom: 1px solid #ccc;
@@ -28,7 +28,7 @@
                         <div class="nav-toggler toggle-slide-left EditedF_OpenMenu" id="OpenBtn"> 
                         <div class="Admin_MenuBtn">
                     	<div class="Admin_MenuBtnRow">
-                        	<img src="img/SlideCLoseOpen_Top.png" height="20" />
+                        	<img src="${pageContext.request.contextPath}/img/SlideCLoseOpen_Top.png" height="20" />
                         </div>
                         
                        
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     
-                                         <img id="categoryImage" src="img/profile.png" style="height:90px;width:90px;border-width:0px;border:1px solid #ccc;">
+                                         <img id="CatImage" src="${pageContext.request.contextPath}/img/profile.png" style="height:90px;width:90px;border-width:0px;border:1px solid #ccc;">
                                   
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                             	<a href="AdminHome.html">
                                         <div style="margin-top:0px;margin-left: 10px;">
                                          <span style="display:block;width: 33px; float: left;">
-                                            <img src="img/Hr_Icon.png" width="15" height="15">
+                                            <img src="${pageContext.request.contextPath}/img/Hr_Icon.png" width="15" height="15">
                                         </span>
                                         <span style="margin-top:1px;">HOME</span>
                                         </div>
@@ -175,7 +175,7 @@
                             	<a href="#">
                                         <div style="margin-top:0px;margin-left: 10px;">
                                          <span style="display:block;width: 33px; float: left;">
-                                            <img src="img/Hr_Icon.png" width="15" height="15">
+                                            <img src="${pageContext.request.contextPath}/img/Hr_Icon.png" width="15" height="15">
                                         </span>
                                         <span style="margin-top:1px;">ITEM MANAGEMENT</span>
                                         </div>
@@ -185,7 +185,7 @@
                             	<a href="#">
                                         <div style="margin-top:0px;margin-left: 10px;">
                                          <span style="display:block;width: 33px; float: left;">
-                                            <img src="img/Emp_Icon.png" width="15" height="15">
+                                            <img src="${pageContext.request.contextPath}/img/Emp_Icon.png" width="15" height="15">
                                         </span>
                                         <span style="margin-top:1px;">WAITER MANAGEMENT</span>
                                         </div>
@@ -195,7 +195,7 @@
                             	<a href="#">
                                         <div style="margin-top:0px;margin-left: 10px;">
                                          <span style="display:block;width: 33px; float: left;">
-                                            <img src="img/Hr_Icon.png" width="15" height="15">
+                                            <img src="${pageContext.request.contextPath}/img/Hr_Icon.png" width="15" height="15">
                                         </span>
                                         <span style="margin-top:1px;">TABLE MANAGEMENT</span>
                                         </div>
@@ -232,13 +232,13 @@
         }
     }
     
-    $("#Img_files").change(function(){
+    $("#categoryImage").change(function(){
         readURL(this);
     });
 </script>
-<script type="text/javascript" src="js/category.js"></script>
-<script src="js/classie.js"></script>
-<script src="js/nav.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/category.js"></script>
+<script src="${pageContext.request.contextPath}/js/classie.js"></script>
+<script src="${pageContext.request.contextPath}/js/nav.js"></script>
 
 </body>
 </html>
