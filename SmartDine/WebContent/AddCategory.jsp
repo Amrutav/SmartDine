@@ -51,7 +51,7 @@
   		  		
         </div>
         
-        <form action="category/addCategory" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/category/addCategory" method="post" enctype="multipart/form-data" >
         <div class="col-lg-8" >
         	<div id="Div1" class="row" style="margin-top: 5px; margin-bottom: 10px;">
                             <div id="DIVEditCatList">
@@ -60,7 +60,7 @@
                                     <div class="col-lg-12" style="padding-top: 8px;"><b>Catagory Name</b></div>
                                 </div>
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
-                                     <input name="TxtCat" type="text" id="categoryName" class="form-control">
+                                     <input name="categoryName" type="text" id="categoryName" class="form-control">
                                 </div>
                                
                             </div>
@@ -71,7 +71,7 @@
                                     
                                     <div class="Div_Col_Button_Browse_Btn active">
                     Browse Image
-                    	<input type="file" id="categoryImage" value="Browse Image" class="FileUpload_Css" />
+                    	<input type="file" id="categoryImage" value="Browse Image" class="FileUpload_Css" name="categoryImage" />
                     	
                     </div>
 

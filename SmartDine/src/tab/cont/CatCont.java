@@ -1,6 +1,7 @@
 package tab.cont;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import tab.entity.Category;
 import tab.entity.CategoryJsonResponse;
 import tab.service.CategoryService;
@@ -40,6 +43,7 @@ public class CatCont {
 	@RequestMapping(value="/addCategory", method = RequestMethod.POST)
 	public ModelAndView addCategory(HttpServletRequest requst, @RequestParam(value="categoryImage",required=false)MultipartFile image){
 		String status=null;
+		ModelAndView mav=new ModelAndView();
 		Map<String, Object> model= new HashMap<>();
 		Category category=null;
 		String imgFile=null;
@@ -73,7 +77,11 @@ public class CatCont {
 		}catch(Exception e){
 			logger.error("Error occours in : ",e);
 		}
-		return new ModelAndView("AddCategory", model);
+		mav.setViewName("AddCategory");
+		//((RedirectAttributes) model).addAttribute("attribute", "AddCategory");
+       // return new ModelAndView("redirect:/redirectedUrl", model);
+		//return new ModelAndView("AddCategory", model);
+		return mav;
 	}
 	
 	@RequestMapping(value = "/categoryList", method = RequestMethod.GET)
