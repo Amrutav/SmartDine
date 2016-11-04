@@ -81,7 +81,7 @@ public class ItemDaoImpl implements ItemDao {
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			String sql = "SELECT itemId,itemName,itemType,itemDesc,itemAvailability,catagoryId FROM tbl_food_item WHERE CatagoryId = "+categoryId;
+			String sql = "SELECT itemId,itemName,itemType,itemDesc,itemAvailability,itemSpicyLevel,priceFull,priceHalf,catagoryId FROM tbl_food_item WHERE CatagoryId = "+categoryId;
 			SQLQuery query = session.createSQLQuery(sql);
 			temp=query.list();
 			if(temp!=null && temp.size()!=0){
@@ -93,7 +93,10 @@ public class ItemDaoImpl implements ItemDao {
 					bean.setItemType((String) item[2]);
 					bean.setItemDesc((String) item[3]);
 					bean.setItemAvailability((String) item[4]);
-					bean.setCategoryId((int) item[5]);
+					bean.setItemSpicyLevel((String) item[5]);
+					bean.setPriceFull((double) item[6]);
+					bean.setPriceHalf((double) item[7]);
+					bean.setCategoryId((int) item[8]);
 					getItemListByCategoryId.add(bean);
 					
 				}

@@ -30,7 +30,6 @@
 			<list>
 					<value>tab.entity.Category</value>
 					<value>tab.entity.Item</value>
-					<value>tab.entity.Price</value>
 					<value>tab.entity.User</value>
 			</list>
 		</property>
@@ -80,9 +79,6 @@
 	
 	<bean id="itemDao" class="tab.dao.ItemDaoImpl"></bean>
 	<bean id="itemServices" class="tab.service.ItemServiceImpl"></bean>
-	
-	<bean id="priceDao" class="tab.dao.PriceDaoImpl"></bean>
-	<bean id="priceServices" class="tab.service.PriceServiceImpl"></bean>
 	
 	<bean id="userDao" class="tab.dao.UserDaoImpl"></bean>
 	<bean id="userServices" class="tab.service.UserServiceImpl"></bean>

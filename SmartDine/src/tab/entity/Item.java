@@ -1,6 +1,5 @@
 package tab.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +25,12 @@ public class Item {
 	private String itemType;
 	@Column(name="ItemDesc")
 	private String itemDesc;
+	@Column(name="ItemSpicyLevel")
+	private String itemSpicyLevel;
+	@Column(name="PriceFull")
+	private double priceFull;
+	@Column(name="PriceHalf")
+	private double priceHalf;
 	@Column(name="ItemAvailability")
 	private String itemAvailability;
 	public String getItemAvailability() {
@@ -66,6 +71,24 @@ public class Item {
 	}
 	public void setCatagory(Category catagory) {
 		this.catagory = catagory;
+	}
+	public String getItemSpicyLevel() {
+		return itemSpicyLevel;
+	}
+	public void setItemSpicyLevel(String itemSpicyLevel) {
+		this.itemSpicyLevel = itemSpicyLevel;
+	}
+	public double getPriceFull() {
+		return priceFull;
+	}
+	public void setPriceFull(double priceFull) {
+		this.priceFull = priceFull;
+	}
+	public double getPriceHalf() {
+		return priceHalf;
+	}
+	public void setPriceHalf(double priceHalf) {
+		this.priceHalf = priceHalf;
 	}
 	
 	

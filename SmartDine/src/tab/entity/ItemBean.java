@@ -7,6 +7,27 @@ public class ItemBean {
 	private String itemType;
 	private String ItemDesc;
 	private String ItemAvailability;
+	private String itemSpicyLevel;
+	private double priceFull;
+	public String getItemSpicyLevel() {
+		return itemSpicyLevel;
+	}
+	public void setItemSpicyLevel(String itemSpicyLevel) {
+		this.itemSpicyLevel = itemSpicyLevel;
+	}
+	public double getPriceFull() {
+		return priceFull;
+	}
+	public void setPriceFull(double priceFull) {
+		this.priceFull = priceFull;
+	}
+	public double getPriceHalf() {
+		return priceHalf;
+	}
+	public void setPriceHalf(double priceHalf) {
+		this.priceHalf = priceHalf;
+	}
+	private double priceHalf;
 	public String getItemAvailability() {
 		return ItemAvailability;
 	}

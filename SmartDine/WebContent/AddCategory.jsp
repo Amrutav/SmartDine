@@ -97,7 +97,7 @@
                                      
                                   <input type="submit" name="btnAddCat" value="Add Catagory" id="btnAddCat" class="btn btn-primary">
                                     <input type="submit" name="btnUpdCat" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
-                                   <input type="submit" name="btnDelete" value="Delete Catagory" id="btnDelete" class="btn btn-danger">
+                                   <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
                                    
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                     </thead>
                                     <tbody>
                                       
-                                              <tr>
+                                              <!-- <tr>
                                                   
                                                   <td></td>
                                                   <td class="center">
@@ -132,7 +132,7 @@
                                                     
                                                   </td>
                                                   <td class="center"><a href="#">Delete</a></td>
-                                              </tr>
+                                              </tr> -->
                                           
                                      
                                     </tbody>
@@ -234,7 +234,7 @@
         readURL(this);
     });
 </script>
-<script type="text/javascript" src="js/admin.js"></script>
+<script type="text/javascript" src="js/category.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/nav.js"></script>
 

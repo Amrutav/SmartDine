@@ -89,6 +89,7 @@ public class CatCont {
 		System.out.println(category.getCategoryId());
 		try{
 			flag = categoryServices.deleteCategory(category);
+			System.out.println(flag);
 			if(flag){
 				categoryJsonResponse.setStatus("SUCCSS");
 			}else {
