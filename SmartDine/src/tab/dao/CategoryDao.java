@@ -13,4 +13,6 @@ public interface CategoryDao {
 
 	public boolean deleteCategory(Category category)throws Exception;
 
+	public List<Category> categoryListById(int categoryId)throws Exception;
+
 }

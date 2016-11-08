@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -35,10 +36,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			if(session!=null){
-				session.close();
-			}
 		}
 		return b;	
 		}
@@ -74,6 +71,24 @@ public class CategoryDaoImpl implements CategoryDao {
 			e.printStackTrace();
 		}
 		return b;
+	}
+
+	@Override
+	public List<Category> categoryListById(int categoryId) throws Exception {
+		// TODO Auto-generated method stub
+		List<Category> getBoardListbyuserId = new ArrayList<Category>();
+		try {
+			session = sessionfactory.openSession();
+			transaction = session.beginTransaction();
+			String sql = "SELECT * FROM tbl_food_category WHERE catagoryId = "+categoryId;
+			SQLQuery query = session.createSQLQuery(sql);
+			query.addEntity(Category.class);
+			getBoardListbyuserId = query.list();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getBoardListbyuserId;
 	}
 
 }

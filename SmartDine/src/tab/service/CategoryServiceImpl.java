@@ -30,6 +30,12 @@ public class CategoryServiceImpl implements CategoryService {
 			// TODO Auto-generated method stub
 			return categoryDao.deleteCategory(category);
 		}
+
+		@Override
+		public List<Category> getCategoryListById(int categoryId) throws Exception {
+			// TODO Auto-generated method stub
+			return categoryDao.categoryListById(categoryId);
+		}
 	
 		
 	}

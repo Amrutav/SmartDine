@@ -13,4 +13,6 @@ public interface CategoryService {
 
 	public boolean deleteCategory(Category category)throws Exception;
 
+	public List<Category> getCategoryListById(int categoryId)throws Exception;
+
 }
