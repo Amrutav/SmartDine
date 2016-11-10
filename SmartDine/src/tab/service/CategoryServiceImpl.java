@@ -36,6 +36,12 @@ public class CategoryServiceImpl implements CategoryService {
 			// TODO Auto-generated method stub
 			return categoryDao.categoryListById(categoryId);
 		}
+
+		@Override
+		public boolean updateCategory(Category category) throws Exception {
+			// TODO Auto-generated method stub
+			return categoryDao.updateCategory(category);
+		}
 	
 		
 	}

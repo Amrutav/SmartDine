@@ -15,4 +15,6 @@ public interface CategoryService {
 
 	public List<Category> getCategoryListById(int categoryId)throws Exception;
 
+	public boolean updateCategory(Category category)throws Exception;
+
 }

@@ -51,7 +51,7 @@
   		  		
         </div>
         
-        <form action="category/addCategory" method="post" enctype="multipart/form-data" >
+        <form method="post" enctype="multipart/form-data" id="catform">
         <div class="col-lg-8" >
         	<div id="Div1" class="row" style="margin-top: 5px; margin-bottom: 10px;">
                             <div id="DIVEditCatList">
@@ -99,7 +99,8 @@
                                   <input type="submit" name="btnAddCat" value="Add Catagory" onclick="return validate_required();" id="btnAddCat" class="btn btn-primary">
                                     <input type="submit" name="btnUpdCat" onclick="return validate_required();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
                                    <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
-                                   <input type="hidden" id="StringMSG" name="hfCatId" id="hfCatId">
+                                   <input type="hidden" name="hfCatId" id="hfCatId">
+                                   <input type="hidden" name="hfCatId2" id="hfCatId2">
                                 </div>
                             </div>
                 </div> 

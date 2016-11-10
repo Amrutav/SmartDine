@@ -39,7 +39,7 @@ public class CatCont {
 	@Autowired
 	private CategoryService categoryServices;
 	private boolean flag;
-	String xxx=null;
+	String status=null;
 	static final Logger logger = Logger.getLogger(Category.class);
 	
 	@RequestMapping(value="/addCategory", method = RequestMethod.POST)
@@ -66,9 +66,9 @@ public class CatCont {
 				System.out.println(flag);
 				System.out.println(flag);
 	                if(flag){
-	                	xxx="SUCCESS";
+	                	status="SUCCESS";
 	                } else{
-	                	xxx="UnSuccessful";
+	                	status="UnSuccessful";
 	                }
 	            }
 	        }
@@ -76,7 +76,7 @@ public class CatCont {
 	        {
 	            logger.error("Error occours in : ", e);
 	        }
-	        response.sendRedirect("http://localhost:8080/SmartDine/AddCategory.jsp");
+	        response.sendRedirect("http://85.25.196.222:8080/SmartDine/AddCategory.jsp");
 	    }
 	
 	
@@ -131,7 +131,7 @@ public class CatCont {
 			boolean flag = categoryServices.deleteCategory(category);
 			System.out.println(flag);
 			if(flag){
-				String status=deleteFile(name);
+				String deleteFile=deleteFile(name);
 				categoryJsonResponse.setStatus("SUCCESS");
 			}else {
 				categoryJsonResponse.setStatus("FAILED");
@@ -148,14 +148,17 @@ public class CatCont {
 	}
 	
 	@RequestMapping(value="/updatCategory", method = RequestMethod.POST)
-	public @ResponseBody CategoryJsonResponse updateCategory(HttpServletRequest requst, @RequestParam(value="categoryImage",required=false)MultipartFile image){
+	public void updateCategory(HttpServletRequest requst,HttpServletResponse response, @RequestParam(value="categoryImage",required=false)MultipartFile image)throws ServletException, IOException{
 		CategoryJsonResponse categoryJsonRespons = new CategoryJsonResponse();
 		Category category=null;
 		String imgFile=null;
-		String fileName=requst.getParameter("catgoryName");
+		String fileName=requst.getParameter("categoryName");
+		System.out.println(fileName);
+		String name=requst.getParameter("hfCatId2");
+		int id=Integer.parseInt(requst.getParameter("hfCatId"));
 		String hostname="http://85.25.196.222:8080/";
 		String fullPath=null;
-		System.out.println("controller body");
+		System.out.println("Update");
 		try{
 			if(image != null){
 				Date date = new Date();
@@ -163,13 +166,15 @@ public class CatCont {
 				imgFile=saveImage(fileName+dateFormat.format(date).toString()+".jpg",image);
 			fullPath=hostname+imgFile;	
 			category=new Category();
+			category.setCategoryId(id);
 			category.setCategoryName(fileName);
 			category.setCategoryImage(fullPath);
-			boolean flag=categoryServices.addCategory(category);
+			boolean flag=categoryServices.updateCategory(category);
 			if(flag){
-				categoryJsonRespons.setStatus("SUCCSS");
+				String deleteFile=deleteFile(name);
+				status="SUCCESS";
 			}else{
-				categoryJsonRespons.setStatus("FAILED");
+				status="UNSUCCESS";
 			}
 			}
 			
@@ -177,7 +182,7 @@ public class CatCont {
 			logger.error("Error occours in : ",e);
 			categoryJsonRespons.setStatus(e.toString());
 		}
-		return categoryJsonRespons;
+		response.sendRedirect("http://85.25.196.222:8080/SmartDine/AddCategory.jsp");
 	}
 	
 	@RequestMapping(value="welcome", method=RequestMethod.POST)
@@ -208,7 +213,7 @@ public class CatCont {
 			logger.debug("Go to the location:  "
 					+ file.toString()
 					+ " on your computer and verify that the image has been stored.");
-			imgSrc= "TabMenu" + File.separator + "Images" + File.separator + filename;
+			imgSrc= "SmartDineImages" + File.separator + filename;
 			return imgSrc;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -226,15 +231,16 @@ public class CatCont {
 			//URI uri=new URI(fileName);
 			//if(uri.isAbsolute()){
 				System.out.println("Absolute");
-				File file=new File(fileName);
-				if(!file.exists()&& !file.isDirectory()){
+				File file=new File("http://85.25.196.222:8080/Test/Shg20160930093034.jpg");
+				file.delete();
+				/*if(!file.exists()&& !file.isDirectory()){
 					//FileUtils.forceDelete(file);
 					file.delete();
 					status="Success";
 					}
 				else{
 					status="Failed";
-				}
+				}*/
 			//}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -91,4 +91,22 @@ public class CategoryDaoImpl implements CategoryDao {
 		return getBoardListbyuserId;
 	}
 
+	@Override
+	public boolean updateCategory(Category category) throws Exception {
+		// TODO Auto-generated method stub
+		boolean b = false;
+		try {
+			session = sessionfactory.openSession();
+			transaction = session.beginTransaction();
+			session.update(category);
+			transaction.commit();
+			session.close();
+			b = true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return b;
+	}
+
 }

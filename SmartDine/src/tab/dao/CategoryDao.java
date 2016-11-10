@@ -15,4 +15,7 @@ public interface CategoryDao {
 
 	public List<Category> categoryListById(int categoryId)throws Exception;
 
+	public boolean updateCategory(Category category)throws Exception;
+
+
 }

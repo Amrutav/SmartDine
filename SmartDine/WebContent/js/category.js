@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	
 	$('#btnUpdCat').attr("disabled", 'disabled');
+	
+	$("#catform").attr("action", "category/addCategory"); //Will set it
 		
 	$.ajax({
 	    url: 'category/categoryList',
@@ -67,6 +69,8 @@ function deleteCategory(id){
 function assignUpdateValue(id){
 	
 	$('#btnUpdCat').prop("disabled", false);
+
+	$("#catform").attr("action", "category/updatCategory"); //Will set it
 	
 	var catId=id;
 	$.ajax({
@@ -88,6 +92,7 @@ function assignUpdateValue(id){
 	    	 $("#categoryName").val(CatName);
 	    	 $("#CatImage").attr('src',Image);
 	    	 $("#hfCatId").val(CatId);
+	    	 $("#hfCatId2").val(Image);
 	    	
 	    }
 	});
