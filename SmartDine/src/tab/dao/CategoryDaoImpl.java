@@ -98,7 +98,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		try {
 			session = sessionfactory.openSession();
 			transaction = session.beginTransaction();
-			session.update(category);
+			session.saveOrUpdate(category);
 			transaction.commit();
 			session.close();
 			b = true;
