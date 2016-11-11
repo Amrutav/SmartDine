@@ -2,18 +2,21 @@ package tab.dao;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import tab.entity.Category;
+import tab.service.CategoryServiceImpl;
 
 public class CategoryDaoImpl implements CategoryDao {
 	
@@ -21,6 +24,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	private SessionFactory sessionfactory;
 	Session session = null;
 	Transaction transaction = null;
+	static final Logger logger = Logger.getLogger(CategoryServiceImpl.class);
 
 	@Override
 	public boolean addCategory(Category category) throws HibernateException {
@@ -107,6 +111,30 @@ public class CategoryDaoImpl implements CategoryDao {
 			e.printStackTrace();
 		}
 		return b;
+	}
+
+	@Override
+	public Category validateCategory(String catName) throws Exception {
+		// TODO Auto-generated method stub
+		Category category=new Category();
+		try {
+			session = sessionfactory.openSession();
+			Criteria criteria = session.createCriteria(category.getClass());
+			criteria.add(Restrictions.eq("categoryName", catName));
+			category = (Category) criteria.uniqueResult();
+			return category;
+		} catch (HibernateException e) {
+			logger.error("Exception occurs in ", e);
+		}catch(Exception ex){
+			logger.error("Exception occurs in ", ex);
+		}finally{
+			try {
+				session.close();
+			} catch (HibernateException e) {
+				logger.error("Exception occurs in ", e);
+			}
+		}
+		return category;
 	}
 
 }

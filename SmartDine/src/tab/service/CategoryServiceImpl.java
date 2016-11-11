@@ -42,6 +42,12 @@ public class CategoryServiceImpl implements CategoryService {
 			// TODO Auto-generated method stub
 			return categoryDao.updateCategory(category);
 		}
+
+		@Override
+		public Category validateCategory(String catName) throws Exception {
+			// TODO Auto-generated method stub
+			return categoryDao.validateCategory(catName);
+		}
 	
 		
 	}

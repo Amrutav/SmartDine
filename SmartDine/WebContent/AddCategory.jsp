@@ -96,8 +96,8 @@
                                 <div data-toggle="modal" id="ADDUser">
                                      
                                      
-                                  <input type="submit" name="btnAddCat" value="Add Catagory" onclick="return validate_required();" id="btnAddCat" class="btn btn-primary">
-                                    <input type="submit" name="btnUpdCat" onclick="return validate_required();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
+                                  <input type="submit" name="btnAddCat" value="Add Catagory" onclick="return validate();" id="btnAddCat" class="btn btn-primary">
+                                    <input type="submit" name="btnUpdCat" onclick="return validate();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
                                    <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
                                    <input type="hidden" name="hfCatId" id="hfCatId">
                                    <input type="hidden" name="hfCatId2" id="hfCatId2">
@@ -241,9 +241,9 @@
     });
     
     
-    function validate_required() {
+    function validate() {
 
-        var categoryName = document.getElementById("UserType").value;
+        var categoryName = document.getElementById("categoryName").value;
         var fname = document.getElementById("categoryImage").value;
        
         

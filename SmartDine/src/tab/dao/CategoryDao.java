@@ -17,5 +17,7 @@ public interface CategoryDao {
 
 	public boolean updateCategory(Category category)throws Exception;
 
+	public Category validateCategory(String catName)throws Exception;
+
 
 }

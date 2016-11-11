@@ -3,6 +3,38 @@ $(document).ready(function(){
 	$('#btnUpdCat').attr("disabled", 'disabled');
 	
 	$("#catform").attr("action", "category/addCategory"); //Will set it
+	
+
+	
+	$("#categoryName").blur(function(){
+		
+		var action=$("#catform").attr("action");
+		
+		if(action=="category/addCategory"){
+		
+		dataObject = {
+				'categoryName':$('#categoryName').val()
+		};
+		console.log(dataObject);
+		var categoryName=$('#categoryName').val();
+		$.ajax({
+		    url: 'category/validateCat?categoryName='+categoryName,
+		    type: 'get',
+			contentType: "application/json; charset=utf-8",
+			dataType:'json',
+			data:JSON.stringify(dataObject),
+		    success: function(result) {
+		        console.log(result); 
+		        if (result.status=="EXIST"){	
+		        	$("#categoryName").val('');
+		        	alert("This Category already exists. Insert new one.");
+		        }
+		    }
+		});
+	
+		
+		}
+	});
 		
 	$.ajax({
 	    url: 'category/categoryList',
@@ -15,7 +47,7 @@ $(document).ready(function(){
 	        var table=$("#dataTables-example");
 		    $.each(result, function(i, item){
 		    	var CatID=result[i].categoryId;
-		    	table+='<tr ><td>'+result[i].categoryName+ '</td><td>' +'<div style="cursor:pointer;" onclick="assignUpdateValue('+CatID+');">'+"Edit"+'</td><td>' +'<div style="cursor:pointer;" onclick="deleteCategory('+CatID+');">'+"Delete"+'</div></td></tr>';
+		    	table+='<tr ><td>'+result[i].categoryName+ '</td><td>' +'<div style="cursor:pointer;" onclick="assignUpdateValue('+CatID+');">'+"Edit"+'</td><td>' +'<div style="cursor:pointer;" onclick="deleteImage('+CatID+');">'+"Delete"+'</div></td></tr>';
 		    });  
 		    $('#dataTables-example').append(table);  
 	}
@@ -24,52 +56,12 @@ $(document).ready(function(){
 	
 });
 
-
-/*function deleteCategory(id){
-	
-	dataObject={
-			'categoryId':id
-		};
-	$.ajax({
-	    url: 'category/deleteCategory',
-	    type: 'delete',
-		contentType: "application/json; charset=utf-8",
-		dataType:'json',
-		data:JSON.stringify(dataObject),
-	    success: function(result) {
-	        console.log(result.status);
-	      if(result.status=="SUCCESS"){
-	    	 window.locate="www.google.com";
-	      }
-	}
-	});
-	
-}*/
-
-
-function deleteCategory(id){
-	
-	dataObject={
-			'categoryId':id
-		};
-	$.ajax({
-	    url: 'category/deleteCategory',
-	    type: 'delete',
-		contentType: "application/json; charset=utf-8",
-		dataType:'json',
-		data:JSON.stringify(dataObject),
-	    success: function(result) {
-	        console.log(result);
-	      
-	}
-	});
-	
-}
-
 function assignUpdateValue(id){
 	
 	$('#btnUpdCat').prop("disabled", false);
-
+	
+	$('#btnAddCat').prop("disabled", true);
+	$('#btnAddCat').css("cursor","wait");
 	$("#catform").attr("action", "category/updatCategory"); //Will set it
 	
 	var catId=id;
@@ -95,6 +87,25 @@ function assignUpdateValue(id){
 	    	 $("#hfCatId2").val(Image);
 	    	
 	    }
+	});
+	
+}
+
+function deleteImage(id){
+	
+	dataObject={
+			'categoryId':id
+		};
+	$.ajax({
+	    url: '../SmartDine/category/deleteCategory',
+	    type: 'delete',
+		contentType: "application/json; charset=utf-8",
+		dataType:'json',
+		data:JSON.stringify(dataObject),
+	    success: function(result) {
+	        console.log(result);
+	      
+	}
 	});
 	
 }
