@@ -42,7 +42,8 @@
         	
     			<div class="list-group">
   				<a href="AddUser.jsp" class="list-group-item active BrdLine">Add User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Add Catagory</a>
+				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Add Category</a>
+				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Add Sub-Category</a>
   				</div>
   		  		<div class="list-group">
   				
@@ -78,7 +79,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     
-                                         <img id="CatImage" src="img/profile.png" style="height:90px;width:90px;border-width:0px;border:1px solid #ccc;">
+                                         <img id="CatImage" src="img/profile.png" value="" style="height:90px;width:90px;border-width:0px;border:1px solid #ccc;">
                                   
                                 </div>
                             </div>
@@ -93,14 +94,15 @@
                                      
                                 
                                      </div>
-                                <div data-toggle="modal" id="ADDUser">
+                                <div data-toggle="modal" id="ADDCategory">
                                      
                                      
                                   <input type="submit" name="btnAddCat" value="Add Catagory" onclick="return validate();" id="btnAddCat" class="btn btn-primary">
-                                    <input type="submit" name="btnUpdCat" onclick="return validate();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
+                                    <input type="submit" name="btnUpdCat" onclick="return updatevalidate();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
                                    <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
                                    <input type="hidden" name="hfCatId" id="hfCatId">
                                    <input type="hidden" name="hfCatId2" id="hfCatId2">
+                                   <input type="hidden" name="hfCatId3" id="hfCatId3" value="">
                                 </div>
                             </div>
                 </div> 
@@ -227,6 +229,9 @@
             
             reader.onload = function (e) {
                 $('#CatImage').attr('src', e.target.result);
+                console.log($('#CatImage').attr('src'));
+                $('#hfCatId3').attr('value', e.target.result);
+                console.log($("#hfCatId3").val());
             }
             
             reader.readAsDataURL(input.files[0]);
@@ -245,16 +250,16 @@
 
         var categoryName = document.getElementById("categoryName").value;
         var fname = document.getElementById("categoryImage").value;
-       
+      //alert(fname);
         
         if (categoryName =="") {
             alert("Please Enter Catagory");
             return false;
         }
-        if (fname.length < 1) {
+         if (fname.length < 1) {
             alert("Please Browse File to Upload");
             return false;
-        }
+        } 
 
       
         
@@ -265,6 +270,24 @@
         }
     }
 
+    function updatevalidate() {
+
+        var categoryName = document.getElementById("categoryName").value;
+        var fname = document.getElementById("categoryImage").value;
+      //alert(fname);
+        
+        if (categoryName =="") {
+            alert("Please Enter Catagory");
+            return false;
+        }     
+        
+        
+        else {
+            return true;
+        }
+    }
+    
+    
 </script>
 <script type="text/javascript" src="js/category.js"></script>
 <script src="js/classie.js"></script>

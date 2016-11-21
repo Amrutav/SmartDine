@@ -51,7 +51,7 @@ public class CatCont {
 			Category category=null;
 			String imgFile=null;
 			String fileName=requst.getParameter("categoryName");
-			String hostname="http://85.25.196.222:8080/";
+			String hostname="http://85.25.196.222:8083/";
 			String fullPath=null;
 			System.out.println("controller body");
 	        try
@@ -79,7 +79,7 @@ public class CatCont {
 	        {
 	            logger.error("Error occours in : ", e);
 	        }
-	        response.sendRedirect("http://85.25.196.222:8080/SmartDine/AddCategory.jsp");
+	        response.sendRedirect("http://85.25.196.222:8083/SmartDine/AddCategory.jsp");
 	    }
 	
 	
@@ -173,11 +173,17 @@ public class CatCont {
 		String imgFile=null;
 		String fileName=requst.getParameter("categoryName");
 		System.out.println(fileName);
-		String name=requst.getParameter("hfCatId2");
+		String hfname=requst.getParameter("hfCatId2");
+		String name=requst.getParameter("hfCatId3");
+		System.out.println("Hidden field is: "+hfname);
+		System.out.println("image field name is: "+name);
 		int id=Integer.parseInt(requst.getParameter("hfCatId"));
-		String hostname="http://85.25.196.222:8080/";
+		String hostname="http://85.25.196.222:8083/";
 		String fullPath=null;
 		System.out.println("Update");
+		if(!hfname.equals(name)){
+			System.out.println("image update ");
+		
 		try{
 			if(image != null){
 				Date date = new Date();
@@ -201,7 +207,30 @@ public class CatCont {
 			logger.error("Error occours in : ",e);
 			categoryJsonRespons.setStatus(e.toString());
 		}
-		response.sendRedirect("http://85.25.196.222:8080/SmartDine/AddCategory.jsp");
+		}
+		else if (hfname.equals(name)) {
+			System.out.println("only update ");
+			try {
+				category=new Category();
+				category.setCategoryId(id);
+				category.setCategoryName(fileName);
+				category.setCategoryImage(hfname);
+				boolean flag=categoryServices.updateCategory(category);
+				if(flag){
+					String deleteFile=deleteFile(name);
+					status="SUCCESS";
+				}else{
+					status="UNSUCCESS";
+				}
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		response.sendRedirect("http://85.25.196.222:8083/SmartDine/AddCategory.jsp");
 	}
 	
 	

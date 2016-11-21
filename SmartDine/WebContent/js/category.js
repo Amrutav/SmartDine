@@ -83,8 +83,11 @@ function assignUpdateValue(id){
 	    	 console.log(CatId);
 	    	 $("#categoryName").val(CatName);
 	    	 $("#CatImage").attr('src',Image);
+	    	 $("#CatImage").attr('value',Image);
+	    	 console.log($("#CatImage").attr('value'));
 	    	 $("#hfCatId").val(CatId);
 	    	 $("#hfCatId2").val(Image);
+	    	 $("#hfCatId3").val(Image);
 	    	
 	    }
 	});
