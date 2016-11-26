@@ -45,13 +45,15 @@
     	<div class="col-lg-3" >
         	
     			<div class="list-group">
-  				<a href="AddUser.jsp" class="list-group-item active BrdLine">Add User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Add Category</a>
-				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Add Sub-Category</a>
+  				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
+				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
+				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
   
 </div>
   		  
         </div>
+        
+        <form method="post" enctype="multipart/form-data" id="subcatform">
         
         <div class="col-lg-8" >
         	<div id="Div1" class="row" style="margin-top: 5px; margin-bottom: 10px;">
@@ -63,19 +65,17 @@
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
                                    
                                      <select name="SelectCat" id="SelectCat" class="form-control">
-                                     	<option value="0">-- Select Catagory --</option>
-                                        <option value="1">Catagory One</option>
-                                        <option value="2">Catagory Two</option>
+                                     	
                                      </select>
                                 </div>
                                
                             </div>
                             <div class="col-lg-3">
                                 <div class="row">
-                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Sub Catagory</b></div>
+                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Sub Category</b></div>
                                 </div>
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
-                                     <input name="txtCat" type="text" id="txtSubCat" class="form-control">
+                                     <input name="subCategoryName" type="text" id="subCategoryName" class="form-control">
                                 </div>
                                
                             </div> 
@@ -85,7 +85,7 @@
                                     
                                     <div class="Div_Col_Button_Browse_Btn active">
                     Browse Image
-                    	<input type="file" id="Img_files" value="Browse Image" class="FileUpload_Css" />
+                    	<input type="file" id="subCategoryImage" value="Browse Image" class="FileUpload_Css" name="subCategoryImage" />
                     	
                     </div>
 
@@ -110,8 +110,11 @@
                                 <div data-toggle="modal" id="ADDSubCat">
                                     
                                     <input type="submit" name="btnAddSubCat" value="Add Sub Catagory" onclick="return validate();" id="btnAddSubCat" class="btn btn-primary">
-                                    <input type="submit" name="btnUpdSubCat" onclick="return validate();" value="Update Catagory" id="btnUpdSubCat" class="btn btn-default">
+                                    <input type="submit" name="btnUpdSubCat" onclick="return updatevalidat();" value="Update Sub-Catagory" id="btnUpdSubCat" class="btn btn-default">
                                    <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
+                                   <input type="hidden" name="hfCatId" id="hfCatId">
+                                   <input type="hidden" name="hfCatId2" id="hfCatId2">
+                                   <input type="hidden" name="hfCatId3" id="hfCatId3" value="">
                                    
                                 </div>
                             </div>
@@ -136,7 +139,7 @@
                                     </thead>
                                     <tbody>
                                       
-                                              <tr>
+                                              <!-- <tr>
                                                   
                                                   <td></td>
                                                   <td class="center">
@@ -146,7 +149,7 @@
                                                     
                                                   </td>
                                                   <td class="center"><a href="#">Delete</a></td>
-                                              </tr>
+                                              </tr> -->
                                           
                                      
                                     </tbody>
@@ -158,6 +161,7 @@
                         </div>
         </div>
        
+       </form>
     </div>
     
     
@@ -265,7 +269,87 @@
 </div>
 
 
-<script type="text/javascript" src="js/admin.js"></script>
+<script type="text/javascript">
+ function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#SubCatImage').attr('src', e.target.result);
+                console.log($('#CatImage').attr('src'));
+                $('#hfCatId3').attr('value', e.target.result);
+                console.log($("#hfCatId3").val());
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#subCategoryImage").change(function(){
+        readURL(this);
+    });
+    $("#btnReset").click(function(){
+    	$("#SubCatImage").attr("src", "");
+    });
+    
+    
+    function validate() {
+
+        var subCategoryName = document.getElementById("subCategoryName").value;
+        var fname = document.getElementById("categoryImage").value;
+        var SelectCat = document.getElementById("SelectCat").value;
+      
+        
+      if (SelectCat ==0) {
+            alert("Please Select Catagory");
+            return false;
+        }  
+      
+      if (subCategoryName =="") {
+            alert("Please Enter Sub-Catagory");
+            return false;
+        }
+         if (fname.length < 1) {
+            alert("Please Browse File to Upload");
+            return false;
+        } 
+
+      
+        
+        
+        
+        else {
+            return true;
+        }
+    }
+
+    function updatevalidate() {
+
+    	var subCategoryName = document.getElementById("subCategoryName").value;
+    	var SelectCat = document.getElementById("SelectCat").value;
+      //alert(fname);
+        
+        if (SelectCat ==0) {
+            alert("Please Select Catagory");
+            return false;
+        }  
+      
+      if (subCategoryName =="") {
+            alert("Please Enter Sub-Catagory");
+            return false;
+        }     
+        
+        
+        else {
+            return true;
+        }
+    }
+    
+    
+</script>
+
+
+<script type="text/javascript" src="js/subcategory.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/nav.js"></script>
 

@@ -41,9 +41,9 @@
     	<div class="col-lg-3" >
         	
     			<div class="list-group">
-  				<a href="AddUser.jsp" class="list-group-item active BrdLine">Add User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Add Category</a>
-				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Add Sub-Category</a>
+  				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
+				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
+				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
   				</div>
   		  		<div class="list-group">
   				

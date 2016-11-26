@@ -1,9 +1,7 @@
 package tab.cont;
 
-import java.io.File;
 
 import java.io.IOException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -32,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tab.entity.Category;
 import tab.entity.CategoryJsonResponse;
 import tab.service.CategoryService;
+import tab.utils.FileOperations;
 
 @Controller
 @RequestMapping("/category")
@@ -60,7 +58,7 @@ public class CatCont {
 	            {
 	            	Date date = new Date();
 					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss") ;
-					imgFile=saveImage(fileName+dateFormat.format(date).toString()+".jpg",image);
+					imgFile=FileOperations.saveImage(fileName+dateFormat.format(date).toString()+".jpg",image);
 					fullPath=hostname+imgFile;	
 					category=new Category();
 					category.setCategoryName(fileName);
@@ -99,7 +97,7 @@ public class CatCont {
 	}
 	
 	
-	//Category List By Category Id
+	//Category By Category Id
 	
 	@RequestMapping(value = "/categoryListById", method = RequestMethod.GET)
 	public @ResponseBody List<Category> getCategoryListById(@RequestParam(value = "categoryId") int categoryId){
@@ -144,7 +142,7 @@ public class CatCont {
 			boolean flag = categoryServices.deleteCategory(category);
 			System.out.println(flag);
 			if(flag){
-				String deleteFile=deleteFile(name);
+				FileOperations.deleteFile(name);
 				categoryJsonResponse.setStatus("SUCCESS");
 			}else {
 				categoryJsonResponse.setStatus("FAILED");
@@ -188,7 +186,7 @@ public class CatCont {
 			if(image != null){
 				Date date = new Date();
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss") ;
-				imgFile=saveImage(fileName+dateFormat.format(date).toString()+".jpg",image);
+				imgFile=FileOperations.saveImage(fileName+dateFormat.format(date).toString()+".jpg",image);
 			fullPath=hostname+imgFile;	
 			category=new Category();
 			category.setCategoryId(id);
@@ -196,7 +194,7 @@ public class CatCont {
 			category.setCategoryImage(fullPath);
 			boolean flag=categoryServices.updateCategory(category);
 			if(flag){
-				String deleteFile=deleteFile(name);
+				FileOperations.deleteFile(name);
 				status="SUCCESS";
 			}else{
 				status="UNSUCCESS";
@@ -217,7 +215,7 @@ public class CatCont {
 				category.setCategoryImage(hfname);
 				boolean flag=categoryServices.updateCategory(category);
 				if(flag){
-					String deleteFile=deleteFile(name);
+					FileOperations.deleteFile(name);
 					status="SUCCESS";
 				}else{
 					status="UNSUCCESS";
@@ -271,66 +269,4 @@ public class CatCont {
 	   	return catJsonResponse;
 	}
 	
-	
-	
-	
-	//Save Image Method
-	
-	private String saveImage(String filename, MultipartFile image)throws RuntimeException, IOException {
-
-		//save image starts
-		String imgSrc=null;
-		try {
-			
-			String rootPath = System.getProperty("catalina.home");
-			logger.debug(rootPath);
-			logger.info(rootPath);
-		    File dir = new File(rootPath + File.separator + "webapps" + File.separator + "SmartDineImages");
-		    if (!dir.exists())
-		     dir.mkdirs();
-			File file = new File(dir.getAbsolutePath()+ File.separator+ filename);
-			FileUtils.writeByteArrayToFile(file, image.getBytes());
-			logger.debug("Go to the location:  "
-					+ file.toString()
-					+ " on your computer and verify that the image has been stored.");
-			imgSrc= "SmartDineImages" + File.separator + filename;
-			return imgSrc;
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.error("Failed!", e);
-		}
-		return imgSrc;
-		//save image ends
-	}
-	
-	
-	//Delete File
-	
-	
-	private String deleteFile(String fileName)throws RuntimeException, IOException{
-		String status=null;
-		boolean b=false;
-		try{
-
-			//URI uri=new URI(fileName);
-			//if(uri.isAbsolute()){
-				//System.out.println("Absolute");
-				File file=new File(fileName);
-				//file.delete();
-				if(!file.exists()&& !file.isDirectory()){
-					//FileUtils.forceDelete(file);
-					file.delete();
-					status="Success";
-					}
-				else{
-					status="Failed";
-				}
-			//}
-		}catch(Exception e){
-			e.printStackTrace();
-			logger.error(e);
-		}
-		System.out.println(status);
-		return status;
-	}
 }

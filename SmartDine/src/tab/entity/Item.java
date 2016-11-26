@@ -46,8 +46,8 @@ public class Item {
 		this.itemDesc = itemDesc;
 	}
 	@ManyToOne
-	@JoinColumn(name="CatagoryId")
-	private Category catagory;
+	@JoinColumn(name="SubCatagoryId")
+	private SubCategory subCatagory;
 	public int getItemId() {
 		return itemId;
 	}
@@ -66,11 +66,11 @@ public class Item {
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
 	}
-	public Category getCatagory() {
-		return catagory;
+	public SubCategory getCatagory() {
+		return subCatagory;
 	}
-	public void setCatagory(Category catagory) {
-		this.catagory = catagory;
+	public void setCatagory(SubCategory subCatagory) {
+		this.subCatagory = subCatagory;
 	}
 	public String getItemSpicyLevel() {
 		return itemSpicyLevel;

@@ -34,12 +34,12 @@ public class ItemBean {
 	public void setItemAvailability(String itemAvailability) {
 		ItemAvailability = itemAvailability;
 	}
-	private int categoryId;
+	private int subCategoryId;
 	public int getCategoryId() {
-		return categoryId;
+		return subCategoryId;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(int subCategoryId) {
+		this.subCategoryId = subCategoryId;
 	}
 	public int getItemId() {
 		return itemId;
