@@ -48,6 +48,7 @@
   				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
 				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
 				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
+				<a href="Item.jsp" class="list-group-item active BrdLine">Item</a>
   
 </div>
   		  

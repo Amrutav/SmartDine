@@ -119,8 +119,8 @@ public class SubCatCont {
 		//Delete Category
 		
 		
-		@RequestMapping(value="/deleteSubCategory", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-		public CategoryJsonResponse deleteSubCategory(@Valid @RequestBody SubCategory subCategory,HttpServletResponse response){
+		@RequestMapping(value="/deleteSubCategory", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+		public @ResponseBody CategoryJsonResponse deleteSubCategory(@Valid @RequestBody SubCategory subCategory){
 			CategoryJsonResponse categoryJsonResponse = new CategoryJsonResponse();
 			List<SubCategoryBean> subCategoryListById = new ArrayList<SubCategoryBean>();
 			int subCategoryId=subCategory.getSubCategoryId();
@@ -206,6 +206,9 @@ public class SubCatCont {
 					System.out.println("Hidden field is: "+hfname);
 					System.out.println("image field name is: "+name);
 					int id=Integer.parseInt(requst.getParameter("hfCatId"));
+					int catid=Integer.parseInt(requst.getParameter("SelectCat"));
+					Category category=new Category();
+					category.setCategoryId(catid);
 					String hostname="http://85.25.196.222:8083/";
 					String fullPath=null;
 					System.out.println("Update");
@@ -220,6 +223,7 @@ public class SubCatCont {
 						fullPath=hostname+imgFile;	
 						subCategory=new SubCategory();
 						subCategory.setSubCategoryId(id);
+						subCategory.setCategory(category);
 						subCategory.setSubCategoryName(fileName);
 						subCategory.setSubCategoryImage(fullPath);
 						boolean flag=subCategoryService.updateSubCategory(subCategory);
@@ -241,6 +245,7 @@ public class SubCatCont {
 						try {
 							subCategory=new SubCategory();
 							subCategory.setSubCategoryId(id);
+							subCategory.setCategory(category);
 							subCategory.setSubCategoryName(fileName);
 							subCategory.setSubCategoryImage(hfname);
 							boolean flag=subCategoryService.updateSubCategory(subCategory);
@@ -258,7 +263,7 @@ public class SubCatCont {
 							e.printStackTrace();
 						}
 					}
-					response.sendRedirect("http://85.25.196.222:8083/SmartDine/AddCategory.jsp");
+					response.sendRedirect("http://85.25.196.222:8083/SmartDine/SubCategory.jsp");
 				}			
 				
 }

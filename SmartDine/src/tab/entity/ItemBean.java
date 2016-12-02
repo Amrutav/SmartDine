@@ -4,11 +4,15 @@ public class ItemBean {
 	
 	private int itemId;
 	private String itemName;
+	private String itemImage;
 	private String itemType;
 	private String ItemDesc;
-	private String ItemAvailability;
 	private String itemSpicyLevel;
+	private String ItemAvailability;
 	private double priceFull;
+	private double priceHalf;
+	private int categoryId;
+	private int subCategoryId;
 	public String getItemSpicyLevel() {
 		return itemSpicyLevel;
 	}
@@ -27,19 +31,17 @@ public class ItemBean {
 	public void setPriceHalf(double priceHalf) {
 		this.priceHalf = priceHalf;
 	}
-	private double priceHalf;
+	public String getItemImage() {
+		return itemImage;
+	}
+	public void setItemImage(String itemImage) {
+		this.itemImage = itemImage;
+	}
 	public String getItemAvailability() {
 		return ItemAvailability;
 	}
 	public void setItemAvailability(String itemAvailability) {
 		ItemAvailability = itemAvailability;
-	}
-	private int subCategoryId;
-	public int getCategoryId() {
-		return subCategoryId;
-	}
-	public void setCategoryId(int subCategoryId) {
-		this.subCategoryId = subCategoryId;
 	}
 	public int getItemId() {
 		return itemId;
@@ -64,6 +66,18 @@ public class ItemBean {
 	}
 	public void setItemDesc(String itemDesc) {
 		ItemDesc = itemDesc;
+	}
+	public int getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	public int getSubCategoryId() {
+		return subCategoryId;
+	}
+	public void setSubCategoryId(int subCategoryId) {
+		this.subCategoryId = subCategoryId;
 	}
 	
 	

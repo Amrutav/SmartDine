@@ -21,6 +21,8 @@ public class Item {
 	private int itemId;
 	@Column(name="ItemName")
 	private String itemName;
+	@Column(name="ItemImage")
+	private String itemImage;
 	@Column(name="ItemType")
 	private String itemType;
 	@Column(name="ItemDesc")
@@ -46,8 +48,20 @@ public class Item {
 		this.itemDesc = itemDesc;
 	}
 	@ManyToOne
-	@JoinColumn(name="SubCatagoryId")
-	private SubCategory subCatagory;
+	@JoinColumn(name="SubCategoryId")
+	private SubCategory subCategory;
+	
+	@ManyToOne
+	@JoinColumn(name="CategoryId")
+	private Category category;
+	
+	public String getItemImage() {
+		return itemImage;
+	}
+	public void setItemImage(String itemImage) {
+		this.itemImage = itemImage;
+	}
+	
 	public int getItemId() {
 		return itemId;
 	}
@@ -66,12 +80,7 @@ public class Item {
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
 	}
-	public SubCategory getCatagory() {
-		return subCatagory;
-	}
-	public void setCatagory(SubCategory subCatagory) {
-		this.subCatagory = subCatagory;
-	}
+	
 	public String getItemSpicyLevel() {
 		return itemSpicyLevel;
 	}
@@ -89,6 +98,18 @@ public class Item {
 	}
 	public void setPriceHalf(double priceHalf) {
 		this.priceHalf = priceHalf;
+	}
+	public SubCategory getSubCategory() {
+		return subCategory;
+	}
+	public void setSubCategory(SubCategory subCategory) {
+		this.subCategory = subCategory;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	

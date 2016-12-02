@@ -126,7 +126,7 @@ public class CatCont {
 	
 	
 	@RequestMapping(value="/deleteCategory", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public CategoryJsonResponse deleteCategory(@Valid @RequestBody Category category,HttpServletResponse response){
+	public @ResponseBody CategoryJsonResponse deleteCategory(@Valid @RequestBody Category category,HttpServletResponse response){
 		CategoryJsonResponse categoryJsonResponse = new CategoryJsonResponse();
 		List<Category> categoryListById = new ArrayList<Category>();
 		int categoryId=category.getCategoryId();
@@ -235,14 +235,15 @@ public class CatCont {
 	
 	//Model and View Test
 	
-	@RequestMapping(value="welcome", method=RequestMethod.POST)
-	public ModelAndView welcome(HttpServletRequest requst,@RequestParam(value="entry")String name){
+	@RequestMapping(value="welcome", method=RequestMethod.GET)
+	public ModelAndView welcome(HttpServletRequest requst/*,@RequestParam(value="entry")String name*/){
 		System.out.println("body");
-		String view= requst.getParameter("entry");
+		String view= "Hello";
+				//requst.getParameter("entry");
 		System.out.println(view);
 		Map<String, Object> model= new HashMap<>();
 		model.put("msg", view);
-		return new ModelAndView("test", model);
+		return new ModelAndView("AddCategory", model);
 		
 	}
 	

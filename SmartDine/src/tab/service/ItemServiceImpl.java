@@ -32,9 +32,27 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<ItemBean> getItemListByCategoryId(int categoryId) throws Exception {
+	public List<ItemBean> getItemListByCategoryId(int categoryId,int subCategoryId) throws Exception {
 		// TODO Auto-generated method stub
-		return itemDao.getItemListByCategoryId(categoryId);
+		return itemDao.getItemListByCategoryId(categoryId,subCategoryId);
+	}
+
+	@Override
+	public Item validateItem(String itemName) throws Exception {
+		// TODO Auto-generated method stub
+		return itemDao.validateItem(itemName);
+	}
+
+	@Override
+	public List<Item> getItemById(int itemId) throws Exception {
+		// TODO Auto-generated method stub
+		return itemDao.getItemById(itemId);
+	}
+
+	@Override
+	public boolean updateItem(Item item) throws Exception {
+		// TODO Auto-generated method stub
+		return itemDao.updateItem(item);
 	}
 
 }

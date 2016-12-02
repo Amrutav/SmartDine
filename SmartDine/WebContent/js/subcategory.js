@@ -157,14 +157,18 @@ function deleteImage(id){
 			'subCategoryId':id
 		};
 	$.ajax({
-	    url: "subCategory/deleteSubCategory",
-	    type: 'delete',
+	    url: 'subCategory/deleteSubCategory',
+	    type: 'post',
 		contentType: "application/json; charset=utf-8",
 		dataType:'json',
 		data:JSON.stringify(dataObject),
 	    success: function(result) {
-	        console.log(result);
-	      
+	    	console.log(result);
+	        	if(result.status=="SUCCESS"){
+	        		
+	        		window.location="SubCategory.jsp";
+	        		        		
+	    }
 	}
 	});
 	

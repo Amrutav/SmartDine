@@ -107,6 +107,10 @@ function deleteImage(id){
 		data:JSON.stringify(dataObject),
 	    success: function(result) {
 	        console.log(result);
+	        if(result.status=="SUCCESS"){
+        		window.location="AddCategory.jsp";
+        		        		
+    }
 	      
 	}
 	});
