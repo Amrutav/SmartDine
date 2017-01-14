@@ -24,4 +24,17 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public int getMaxId() throws Exception {
+		// TODO Auto-generated method stub
+		int getId = userDao.getMaxId();
+		return getId;
+	}
+
+	@Override
+	public boolean addUser(User user) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.addUser(user);
+	}
+
 }

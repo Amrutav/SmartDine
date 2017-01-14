@@ -43,10 +43,10 @@
     			<div class="list-group">
     			<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">USER</a>
   				<a href="AddUser.jsp" class="list-group-item">User</a>
-  				<a href="AddTable.jsp" class="list-group-item">Add Table</a>
+  				<a href="AddTable.jsp" class="list-group-item active BrdLine">Add Table</a>
   				<a href="Assign.jsp" class="list-group-item">Assign Table</a>
   				<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">ITEM</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
+				<a href="AddCategory.jsp" class="list-group-item">Category</a>
 				<a href="SubCategory.jsp" class="list-group-item">Sub-Category</a>
 				<a href="Item.jsp" class="list-group-item">Item</a>
 				<a href="Logout.jsp" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">LOGOUT</a>
@@ -64,34 +64,16 @@
                             <div id="DIVEditCatList">
                             <div class="col-lg-3">
                                 <div class="row">
-                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Category Name</b></div>
+                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Table Name</b></div>
                                 </div>
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
-                                     <input name="categoryName" type="text" id="categoryName" class="form-control">
+                                     <input name="tableName" type="text" id="tableName" class="form-control">
                                 </div>
                                
                             </div>
                                 
-                            <div class="col-lg-6">
-                                <div class="col-lg-5" style="padding-top: 8px;">
-                                    <b>Image</b>
-                                    
-                                    <div class="Div_Col_Button_Browse_Btn active">
-                    Browse Image
-                    	<input type="file" id="categoryImage" value="Browse Image" class="FileUpload_Css" name="categoryImage" />
-                    	
-                    </div>
-
-                                </div>
-                                <div class="col-lg-7">
-                                    
-                                         <img id="CatImage" src="img/profile.png" value="" style="height:90px;width:90px;border-width:0px;border:1px solid #ccc;">
-                                  
-                                </div>
                             </div>
-                                </div>
                           
-
                         </div>
                         <div class="row" style="margin-top: 5px; margin-bottom: 10px;">
                         <div class="col-lg-12 pull-left">
@@ -103,8 +85,8 @@
                                 <div data-toggle="modal" id="ADDCategory">
                                      
                                      
-                                  <input type="submit" name="btnAddCat" value="Add Catagory" onclick="return validate();" id="btnAddCat" class="btn btn-primary">
-                                    <input type="submit" name="btnUpdCat" onclick="return updatevalidate();" value="Update Catagory" id="btnUpdCat" class="btn btn-default">
+                                  <input type="submit" name="btnAddCat" value="Add Table" onclick="return validate();" id="btnAddCat" class="btn btn-primary">
+                                    <input type="submit" name="btnUpdCat" onclick="return validate();" value="Update Table" id="btnUpdCat" class="btn btn-default">
                                    <input type="reset" name="btnReset" value="Reset" id="btnReset" class="btn btn-danger">
                                    <input type="hidden" name="hfCatId" id="hfCatId">
                                    <input type="hidden" name="hfCatId2" id="hfCatId2">
@@ -116,7 +98,7 @@
                         <div class="Contain_List">
                         	<div class="panel panel-default">
                         <div class="panel-heading">
-                            Category List
+                            Table List
                         </div>
                        
                         <div class="panel-body">
@@ -125,7 +107,7 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th>Category Name</th>
+                                            <th>Table Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -229,73 +211,24 @@
 
 </div>
 <script type="text/javascript">
- function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#CatImage').attr('src', e.target.result);
-                console.log($('#CatImage').attr('src'));
-                $('#hfCatId3').attr('value', e.target.result);
-                console.log($("#hfCatId3").val());
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-    $("#categoryImage").change(function(){
-        readURL(this);
-    });
-    $("#btnReset").click(function(){
-    	$("#CatImage").attr("src", "");
-    });
-    
-    
+ 
     function validate() {
 
-        var categoryName = document.getElementById("categoryName").value;
-        var fname = document.getElementById("categoryImage").value;
-      //alert(fname);
+        var categoryName = document.getElementById("tableName").value;
+       
         
         if (categoryName =="") {
             alert("Please Enter Catagory");
             return false;
         }
-         if (fname.length < 1) {
-            alert("Please Browse File to Upload");
-            return false;
-        } 
-
-      
-        
-        
         
         else {
             return true;
         }
     }
 
-    function updatevalidate() {
-
-        var categoryName = document.getElementById("categoryName").value;
-        var fname = document.getElementById("categoryImage").value;
-      //alert(fname);
-        
-        if (categoryName =="") {
-            alert("Please Enter Catagory");
-            return false;
-        }     
-        
-        
-        else {
-            return true;
-        }
-    }
-    
-    
 </script>
-<script type="text/javascript" src="js/category.js"></script>
+<script type="text/javascript" src="#"></script>
 <script src="js/classie.js"></script>
 <script src="js/nav.js"></script>
 

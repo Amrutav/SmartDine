@@ -34,6 +34,8 @@
 					<value>tab.entity.ItemType</value>
 					<value>tab.entity.User</value>
 					<value>tab.entity.SubCategory</value>
+					<value>tab.entity.Tablee</value>
+					<value>tab.entity.Assign</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -88,5 +90,11 @@
 	
 	<bean id="userDao" class="tab.dao.UserDaoImpl"></bean>
 	<bean id="userServices" class="tab.service.UserServiceImpl"></bean>
+	
+	<bean id="tableDao" class="tab.dao.TableDaoImpl"></bean>
+	<bean id="tableService" class="tab.service.TableServiceImpl"></bean>
+	
+	<bean id="assignDao" class="tab.dao.AssignDaoImpl"></bean>
+	<bean id="asignService" class="tab.service.AssignServiceImpl"></bean>
 	
 </beans>

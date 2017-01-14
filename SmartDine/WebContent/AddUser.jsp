@@ -41,10 +41,15 @@
     	<div class="col-lg-3" >
         	
     			<div class="list-group">
-  				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
-				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
-				<a href="Item.jsp" class="list-group-item active BrdLine">Item</a>
+    			<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">USER</a>
+  				<a href="AddUser.jsp" class="list-group-item active BrdLine">Add User</a>
+  				<a href="AddTable.jsp" class="list-group-item">Add Table</a>
+  				<a href="Assign.jsp" class="list-group-item">Assign Table</a>
+  				<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">ITEM</a>
+				<a href="AddCategory.jsp" class="list-group-item">Category</a>
+				<a href="SubCategory.jsp" class="list-group-item">Sub-Category</a>
+				<a href="Item.jsp" class="list-group-item">Item</a>
+				<a href="Logout.jsp" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">LOGOUT</a>
   				</div>
   		  		<div class="list-group">
   				
@@ -71,8 +76,13 @@
                                     <div class="col-lg-12" style="padding-top: 8px;"><b>User Type</b></div>
                                 </div>
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
-                                     
-                                    <input name="txtUUserType" id="txtUUserType" type="text" class="form-control">
+                                                                       
+                                    <select name="txtUUserType" class="form-control" id="txtUUserType" style="width:200px">
+                                  	<option value=0>-- Select Type --</option>
+      								<option value="Supervisor">Supervisor</option>
+      								<option value="Waiter">Waiter</option>
+      								</select>
+                                    
                                 </div>
                                
                             </div>
@@ -132,13 +142,14 @@
                                            
                                             <th>User ID</th>
                                             <th>User Name</th>
+                                            <th>User Type</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                       
-                                              <tr>
+                                              <!-- <tr>
                                                    <td>User ID</td>
                                                   <td>User Name</td>
                                                   <td class="center">
@@ -149,7 +160,7 @@
                                                   </td>
                                                   <td class="center"><a href="#">Delete</a></td>
                                               </tr>
-                                          
+                                           -->
                                      
                                     </tbody>
                                 </table>
@@ -235,7 +246,7 @@
 
 </div>
 
-<script type="text/javascript" src="js/admin.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/nav.js"></script>
 

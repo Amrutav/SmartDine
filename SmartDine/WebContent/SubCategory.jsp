@@ -19,8 +19,7 @@
 <body>
 
 <div id="Wrapper">
-<div class="header">
-    </div>
+<div class="header header_Txt">ADMIN PANEL</div>
     <div class="AdminFixedpanel_Container">
         
         <div class="Menu_RightContainer">
@@ -45,10 +44,15 @@
     	<div class="col-lg-3" >
         	
     			<div class="list-group">
-  				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
+    			<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">USER</a>
+  				<a href="AddUser.jsp" class="list-group-item">User</a>
+  				<a href="AddTable.jsp" class="list-group-item">Add Table</a>
+  				<a href="Assign.jsp" class="list-group-item">Assign Table</a>
+  				<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">ITEM</a>
+				<a href="AddCategory.jsp" class="list-group-item">Category</a>
 				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
-				<a href="Item.jsp" class="list-group-item active BrdLine">Item</a>
+				<a href="Item.jsp" class="list-group-item">Item</a>
+				<a href="Logout.jsp" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">LOGOUT</a>
   
 </div>
   		  
@@ -61,7 +65,7 @@
                             <div id="DIVEditCatList">
                             <div class="col-lg-3">
                                 <div class="row">
-                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Catagory</b></div>
+                                    <div class="col-lg-12" style="padding-top: 8px;"><b>Category</b></div>
                                 </div>
                                 <div class="row" style="margin-left:5px;margin-top:5px;">
                                    

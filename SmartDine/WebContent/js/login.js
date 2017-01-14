@@ -18,6 +18,7 @@ $(document).ready(function(){
 			data:JSON.stringify(dataObject),
 		    success: function(result) {
 		    	console.log(result);
+		    	alert(result.status);
 		        	if(result.status=="SUCCESS"){
 		        		var userData=result.user.userId;
 		        		var session = sessionStorage.setItem("UserData",userData);

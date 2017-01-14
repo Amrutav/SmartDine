@@ -6,6 +6,10 @@ import tab.entity.User;
 
 public interface UserDao {
 
-	User getAuthenticUser(User user)throws Exception, HibernateException;
+	public User getAuthenticUser(User user)throws Exception, HibernateException;
+
+	public int getMaxId()throws Exception;
+
+	public boolean addUser(User user)throws Exception;
 
 }

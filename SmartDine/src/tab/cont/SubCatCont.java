@@ -192,7 +192,7 @@ public class SubCatCont {
 		
 				
 
-				//Update Category
+				//Update Sub-Category
 				
 				@RequestMapping(value="/updatSubCategory", method = RequestMethod.POST)
 				public void updateSubCategory(HttpServletRequest requst,HttpServletResponse response, @RequestParam(value="subCategoryImage",required=false)MultipartFile image)throws ServletException, IOException{

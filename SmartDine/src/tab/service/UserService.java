@@ -6,6 +6,10 @@ import tab.entity.User;
 
 public interface UserService {
 
-	User getAuthenticateUser(User user)throws Exception, HibernateException;
+	public User getAuthenticateUser(User user)throws Exception, HibernateException;
+
+	public int getMaxId()throws Exception;
+
+	public boolean addUser(User user)throws Exception;
 
 }

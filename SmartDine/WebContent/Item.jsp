@@ -47,10 +47,15 @@
     	<div class="col-lg-3" >
         	
     			<div class="list-group">
-  				<a href="AddUser.jsp" class="list-group-item active BrdLine">User</a>
-				<a href="AddCategory.jsp" class="list-group-item active BrdLine">Category</a>
-				<a href="SubCategory.jsp" class="list-group-item active BrdLine">Sub-Category</a>
+    			<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">USER</a>
+  				<a href="AddUser.jsp" class="list-group-item">User</a>
+  				<a href="AddTable.jsp" class="list-group-item">Add Table</a>
+  				<a href="Assign.jsp" class="list-group-item">Assign Table</a>
+  				<a href="#" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">ITEM</a>
+				<a href="AddCategory.jsp" class="list-group-item">Category</a>
+				<a href="SubCategory.jsp" class="list-group-item">Sub-Category</a>
                 <a href="Item.jsp" class="list-group-item active BrdLine">Item</a>
+                <a href="Logout.jsp" class="list-group-item active BrdLine" style="background-color:#000;color:#fff;">LOGOUT</a>
   				</div>
   		  		<div class="list-group">
   				

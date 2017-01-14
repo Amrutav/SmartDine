@@ -31,6 +31,8 @@ public class UserCont {
 	private MessageSource messageSource;
 	static final Logger logger = Logger.getLogger(UserCont.class);
 	
+	//User Login
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody UserJsonResponse login(@Valid @RequestBody User user,BindingResult bindingResult){
 		UserJsonResponse userJsonResponse = new UserJsonResponse();
@@ -58,6 +60,50 @@ public class UserCont {
 				if(validUser.getLoginId() > 0){
 					userJsonResponse.setStatus("SUCCESS");
 					userJsonResponse.setUser(validUser);
+				}else{
+					userJsonResponse.setStatus("FAILED");
+				}
+				return userJsonResponse;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return userJsonResponse;
+	}
+	
+	
+	//User Creation
+	
+	@RequestMapping(value="/addUser", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody UserJsonResponse addUser(@Valid @RequestBody User user,BindingResult bindingResult){
+		UserJsonResponse userJsonResponse = new UserJsonResponse();
+		if(bindingResult.hasErrors()){
+			Map<String, String> error = new HashMap<String, String>();
+			List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+			for(FieldError fieldError : fieldErrors){
+				String[] resolveMessageCodes = bindingResult.resolveMessageCodes(fieldError.getCode());
+				String string = resolveMessageCodes[0];
+				logger.debug("ResolveMessageCodes : "+string);
+				String messages = messageSource.getMessage(string+"."+fieldError.getField(), new Object[]{fieldError.getRejectedValue()}, null);
+				logger.debug("Messages : "+messages);
+				error.put(fieldError.getField(), messages);
+			}
+			userJsonResponse.setErrorsMap(error);
+			userJsonResponse.setUser(user);
+			userJsonResponse.setStatus("ERROR");
+			return userJsonResponse;
+		}else{
+			try {
+				int getId =  userServices.getMaxId();
+				getId = getId+1;
+				String prefix = "SD";
+				String suffix = String.format("%04d", getId);               
+				user.setUserId(prefix.concat(suffix));
+				System.out.println(prefix.concat(suffix));
+				boolean validUser = userServices.addUser(user);
+				if(validUser){
+					userJsonResponse.setStatus("SUCCESS");
 				}else{
 					userJsonResponse.setStatus("FAILED");
 				}
