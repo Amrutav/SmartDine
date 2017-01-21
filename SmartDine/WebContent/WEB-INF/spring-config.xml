@@ -36,6 +36,7 @@
 					<value>tab.entity.SubCategory</value>
 					<value>tab.entity.Tablee</value>
 					<value>tab.entity.Assign</value>
+					<value>tab.entity.Order</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -95,6 +96,9 @@
 	<bean id="tableService" class="tab.service.TableServiceImpl"></bean>
 	
 	<bean id="assignDao" class="tab.dao.AssignDaoImpl"></bean>
-	<bean id="asignService" class="tab.service.AssignServiceImpl"></bean>
+	<bean id="assignService" class="tab.service.AssignServiceImpl"></bean>
+	
+	<bean id="orderDao" class="tab.dao.OrderDaoImpl"></bean>
+	<bean id="orderService" class="tab.service.OrderServiceImpl"></bean>
 	
 </beans>
