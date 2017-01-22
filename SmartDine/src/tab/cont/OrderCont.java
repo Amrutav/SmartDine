@@ -68,19 +68,13 @@ public class OrderCont {
 			    double price=0;
 				int itemId=order.getItemId();
 				System.out.println(itemId);
-				
 			    itemById = itemServices.getItemById(itemId);
-			    
 			    for(int i = 0; i<itemById.size();i++){
 			    	priceFull=itemById.get(i).getPriceFull();
 			    	System.out.println(priceFull);
 			    	priceHalf=itemById.get(i).getPriceHalf();
 			    	System.out.println(priceHalf);
-			    }
-			    
-			    System.out.println(priceFull);
-			    System.out.println(priceHalf);
-			    
+			    }			    
 			    serving = order.getServing();
 			    quantity = order.getQuantity();
 			    String servF="full";
