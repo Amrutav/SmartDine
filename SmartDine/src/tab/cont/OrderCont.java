@@ -1,6 +1,8 @@
 package tab.cont;
 
+import java.util.ArrayList;
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tab.entity.Item;
 import tab.entity.Order;
 import tab.entity.OrderJsonResonse;
-import tab.entity.User;
-import tab.entity.UserJsonResponse;
+import tab.service.ItemService;
 import tab.service.OrderService;
 
 @Controller
@@ -31,6 +33,8 @@ public class OrderCont {
 	
 	@Autowired
 	OrderService orderService;
+	@Autowired
+	ItemService itemServices;
 	
 	private MessageSource messageSource;
 	static final Logger logger = Logger.getLogger(OrderCont.class);
@@ -56,14 +60,39 @@ public class OrderCont {
 			return orderJsonResponse;
 		}else{
 			try {
-				/*int getId =  userServices.getMaxId();
-				getId = getId+1;
-				String prefix = "SD";
-				String suffix = String.format("%04d", getId);*/   
-				System.out.println(order.getItemId());
-				order.getItemId();
+				List<Item> itemById = new ArrayList<Item>();
+				double priceFull=0;
+			    double priceHalf=0;
+			    String serving = null;
+			    int quantity=0;
+			    double price=0;
+				int itemId=order.getItemId();
+				System.out.println(itemId);
+				
+			    itemById = itemServices.getItemById(itemId);
+			    
+			    for(int i = 0; i<itemById.size();i++){
+			    	priceFull=itemById.get(i).getPriceFull();
+			    	System.out.println(priceFull);
+			    	priceHalf=itemById.get(i).getPriceHalf();
+			    	System.out.println(priceHalf);
+			    }
+			    
+			    System.out.println(priceFull);
+			    System.out.println(priceHalf);
+			    
+			    serving = order.getServing();
+			    quantity = order.getQuantity();
+			    String servF="full";
+			    String servH="half";
+			    if(serving.equalsIgnoreCase(servF)){
+			    	price=priceFull*quantity;
+			    }else if(serving.equalsIgnoreCase(servH)){
+			    	price=priceHalf*quantity;
+			    }
+			    
 				order.setDateTime(new Date());
-				order.setPrice(80);
+				order.setPrice(price);
 				boolean validUser = orderService.takeOrder(order);
 				if(validUser){
 					orderJsonResponse.setStatus("SUCCESS");
