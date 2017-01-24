@@ -4,6 +4,7 @@ import java.util.List;
 
 import tab.entity.Item;
 import tab.entity.ItemBean;
+import tab.entity.Order;
 
 public interface ItemService {
 
@@ -20,5 +21,6 @@ public interface ItemService {
 	public List<Item> getItemById(int itemId)throws Exception;
 
 	public boolean updateItem(Item item)throws Exception;
+
 
 }

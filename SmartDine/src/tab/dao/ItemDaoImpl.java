@@ -173,7 +173,7 @@ public class ItemDaoImpl implements ItemDao {
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			String sql = "SELECT * FROM tbl_food_item WHERE itemId = "+itemId;
+			String sql = "SELECT * FROM tbl_food_item WHERE itemId = "+ itemId;
 			SQLQuery query = session.createSQLQuery(sql);
 			query.addEntity(Item.class);
 			getItem = query.list();

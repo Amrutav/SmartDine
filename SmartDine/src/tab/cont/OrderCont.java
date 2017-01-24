@@ -19,6 +19,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tab.entity.Item;
@@ -100,6 +101,21 @@ public class OrderCont {
 			}
 		}
 		return orderJsonResponse;
+	}
+	
+	
+	//View Order By table name
+	
+	@RequestMapping(value = "/orderByTableName", method = RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Order> orderByTableName( @RequestParam(value = "tableName") String tableName) {
+		List<Order> orderByTable = new ArrayList<Order>();
+	    try {
+	    	orderByTable = orderService.getOrderByTable(tableName);	        
+	    	return orderByTable;
+	       } catch (Exception e) {
+	    	logger.error("Exception occurs in", e);
+	    }
+	   	return orderByTable;
 	}
 	
 }
